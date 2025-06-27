@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 part 'attendance_state.freezed.dart';
 

@@ -1,12 +1,10 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:student_dashboard_app/src/feature/analytics/analytics_page.dart';
 import 'package:student_dashboard_app/src/feature/home/home_page.dart';
 
 import '../profile/profile_page.dart';
-import 'bloc/nav_bar_cubit.dart';
 
 @RoutePage()
 class MainWrapperPage extends StatelessWidget {
@@ -15,6 +13,8 @@ class MainWrapperPage extends StatelessWidget {
     const AnalyticsPage(),
     const ProfilePage(),
   ];
+
+  MainWrapperPage({super.key});
 
   @override
   Widget build(BuildContext context) {
