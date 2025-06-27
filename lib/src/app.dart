@@ -4,7 +4,11 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import "package:nested/nested.dart";
 import '../generated/l10n.dart';
+import 'feature/analytics/bloc/attendance_bloc.dart';
+import 'feature/auth/bloc/login_bloc.dart';
+import 'feature/home/bloc/home_bloc.dart';
 import 'feature/main/main_wrapper.dart';
+import 'feature/profile/bloc/profile_bloc.dart';
 import 'feature/settings/inherited/local_cubit.dart';
 import 'feature/settings/inherited/theme_controller.dart';
 
@@ -21,6 +25,10 @@ class MyApp extends StatelessWidget {
       builder: (BuildContext context, Widget? child) {
         return MultiBlocProvider(
           providers: <SingleChildWidget>[
+            BlocProvider(create: (context) => LoginBloc()),
+            BlocProvider(create: (context) => HomeBloc()),
+            BlocProvider(create: (context) => AttendanceBloc()),
+            BlocProvider(create: (context) => ProfileBloc()),
             BlocProvider(create: (context) => LocaleCubit()),
             BlocProvider(create: (context) => ThemeCubit()),
           ],
@@ -29,7 +37,7 @@ class MyApp extends StatelessWidget {
               return BlocBuilder<LocaleCubit, Locale>(
                 builder: (context, locale) {
                   return MaterialApp(
-                    home: const MainWrapper(),
+                    home: MainWrapperPage(),
                     debugShowCheckedModeBanner: false,
                     onGenerateTitle:
                         (BuildContext context) => "Student dashboard",

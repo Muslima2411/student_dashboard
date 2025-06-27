@@ -1,85 +1,46 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 
-/// TODO - make best practices for auto route
-/// TODO - all bottom sheets should be up of the screens
-/// TODO - privesti v poryadok dat comenti
+import '../../feature/analytics/analytics_page.dart';
+import '../../feature/auth/login_page.dart';
+import '../../feature/home/home_page.dart';
+import '../../feature/main/main_wrapper.dart';
+import '../../feature/profile/profile_page.dart';
 
-part "app_router.gr.dart";
+part 'app_router.gr.dart';
 
-@AutoRouterConfig(replaceInRouteName: "Page,Route")
+@AutoRouterConfig(replaceInRouteName: 'Page,Route')
 class AppRouter extends RootStackRouter {
   @override
   RouteType get defaultRouteType => const RouteType.adaptive();
 
   @override
   List<AutoRoute> get routes => <AutoRoute>[
-    // AutoRoute(
-    //   // initial: true,
-    //   page: SplashRoute.page,
-    // // ),
-    // AutoRoute(
-    //   // initial: true,
-    //   page: ErrorRoute.page,
-    // ),
-    //
-    // AutoRoute(
-    //   // initial: true,
-    //   page: ChooseLanguageRoute.page,
-    // ),
-    //
-    // AutoRoute(
-    //   // initial: true,
-    //   page: ChooseLanguageRoute.page,
-    // ),
-    //
-    // AutoRoute(
-    //   // initial: true,
-    //   page: OnBoardingRoute.page,
-    // ),
-    //
-    // /// Cargo Main
-    // AutoRoute(
-    //   page: CargoMainRoute.page,
-    //   children: <AutoRoute>[
-    //     AutoRoute(initial: true, page: CargoHomeRoute.page),
-    //     AutoRoute(page: MyCargoRoute.page),
-    //     AutoRoute(page: CreateCargoRoute.page),
-    //     AutoRoute(page: CargoChatsRoute.page),
-    //     AutoRoute(page: CargoProfileRoute.page),
-    //   ],
-    // ),
-    //
-    // /// Transporter Main
-    // AutoRoute(
-    //   initial: true,
-    //   page: TransporterMainRoute.page,
-    //   children: <AutoRoute>[
-    //     AutoRoute(initial: true, page: TransporterHomeRoute.page),
-    //     AutoRoute(page: TransporterMyOrdersRoute.page),
-    //     AutoRoute(page: TransporterSearchOrdersRoute.page),
-    //     AutoRoute(page: TransporterChatRoute.page),
-    //     AutoRoute(page: TransporterProfileRoute.page),
-    //   ],
-    // ),
-    //
-    // /// Auth
-    // AutoRoute(
-    //   // initial: true,
-    //   page: AuthGateRoute.page,
-    // ),
-    // AutoRoute(page: LoginRoute.page),
-    //
-    // /// cargo profile part
-    // AutoRoute(page: TransporterMyReviewsRoute.page),
-    // AutoRoute(page: TransporterSettingsRoute.page),
-    // AutoRoute(page: TransporterEditProfileInfoRoute.page),
-    // AutoRoute(page: TransporterVerificationRoute.page),
-    //
-    // AutoRoute(page: RegisterChooseRoleRoute.page),
-    // AutoRoute(page: RegisterEnterDataRoute.page),
-    // AutoRoute(page: RegisterPasswordRoute.page),
-    // AutoRoute(page: OtpVerificationRoute.page),
-    // AutoRoute(page: PasswordRecoveryRoute.page),
-    // AutoRoute(page: RegisterSuccessRoute.page),
+    AutoRoute(
+      page: LoginRoute.page,
+      initial: true, // Login as the initial route
+    ),
+    AutoRoute(
+      page: MainWrapperRoute.page,
+      children: [
+        AutoRoute(path: 'home', page: HomeRoute.page, initial: true),
+        AutoRoute(path: 'analytics', page: AnalyticsRoute.page),
+        AutoRoute(path: 'profile', page: ProfileRoute.page),
+      ],
+      guards: [AuthGuard()],
+    ),
   ];
+}
+
+// Optional: Define a simple AuthGuard for authentication
+class AuthGuard extends AutoRouteGuard {
+  @override
+  void onNavigation(NavigationResolver resolver, StackRouter router) {
+    const isAuthenticated = false;
+    if (isAuthenticated) {
+      resolver.next();
+    } else {
+      router.push(LoginRoute());
+    }
+  }
 }
