@@ -55,34 +55,159 @@ class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  /// `Выберите язык`
-  String get choose_lang {
+  /// `Время`
+  String get time {
+    return Intl.message('Время', name: 'time', desc: '', args: []);
+  }
+
+  /// `Курс`
+  String get course {
+    return Intl.message('Курс', name: 'course', desc: '', args: []);
+  }
+
+  /// `Мой Профиль`
+  String get myProfile {
+    return Intl.message('Мой Профиль', name: 'myProfile', desc: '', args: []);
+  }
+
+  /// `Контактные данные`
+  String get contactDetails {
     return Intl.message(
-      'Выберите язык',
-      name: 'choose_lang',
+      'Контактные данные',
+      name: 'contactDetails',
       desc: '',
       args: [],
     );
   }
 
-  /// `Выбрать`
-  String get choose {
-    return Intl.message('Выбрать', name: 'choose', desc: '', args: []);
-  }
-
-  /// `Нет интернета. Проверьте подключение к интернету`
-  String get lost_internet_connection {
+  /// `Номер телефона`
+  String get contactNo {
     return Intl.message(
-      'Нет интернета. Проверьте подключение к интернету',
-      name: 'lost_internet_connection',
+      'Номер телефона',
+      name: 'contactNo',
       desc: '',
       args: [],
     );
   }
 
-  /// `Дата`
-  String get date {
-    return Intl.message('Дата', name: 'date', desc: '', args: []);
+  /// `Электронная почта`
+  String get email {
+    return Intl.message('Электронная почта', name: 'email', desc: '', args: []);
+  }
+
+  /// `Адрес`
+  String get address {
+    return Intl.message('Адрес', name: 'address', desc: '', args: []);
+  }
+
+  /// `Редактировать`
+  String get edit {
+    return Intl.message('Редактировать', name: 'edit', desc: '', args: []);
+  }
+
+  /// `Мои текущие курсы`
+  String get ongoingCourses {
+    return Intl.message(
+      'Мои текущие курсы',
+      name: 'ongoingCourses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Мои учебные центры`
+  String get eduCenters {
+    return Intl.message(
+      'Мои учебные центры',
+      name: 'eduCenters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Понедельник`
+  String get monday {
+    return Intl.message('Понедельник', name: 'monday', desc: '', args: []);
+  }
+
+  /// `Вторник`
+  String get tuesday {
+    return Intl.message('Вторник', name: 'tuesday', desc: '', args: []);
+  }
+
+  /// `Среда`
+  String get wednesday {
+    return Intl.message('Среда', name: 'wednesday', desc: '', args: []);
+  }
+
+  /// `Четверг`
+  String get thursday {
+    return Intl.message('Четверг', name: 'thursday', desc: '', args: []);
+  }
+
+  /// `Пятница`
+  String get friday {
+    return Intl.message('Пятница', name: 'friday', desc: '', args: []);
+  }
+
+  /// `Суббота`
+  String get saturday {
+    return Intl.message('Суббота', name: 'saturday', desc: '', args: []);
+  }
+
+  /// `Воскресенье`
+  String get sunday {
+    return Intl.message('Воскресенье', name: 'sunday', desc: '', args: []);
+  }
+
+  /// `Посещаемость`
+  String get attendance {
+    return Intl.message('Посещаемость', name: 'attendance', desc: '', args: []);
+  }
+
+  /// `Курс IELTS`
+  String get ielts_course {
+    return Intl.message('Курс IELTS', name: 'ielts_course', desc: '', args: []);
+  }
+
+  /// `Грамматика`
+  String get grammar_course {
+    return Intl.message(
+      'Грамматика',
+      name: 'grammar_course',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Войдите в свою учетную запись`
+  String get signInTitle {
+    return Intl.message(
+      'Войдите в свою учетную запись',
+      name: 'signInTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Введите свою почту и пароль для входа`
+  String get signInSubtitle {
+    return Intl.message(
+      'Введите свою почту и пароль для входа',
+      name: 'signInSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пароль`
+  String get password {
+    return Intl.message('Пароль', name: 'password', desc: '', args: []);
+  }
+
+  /// `Войти`
+  String get loginButton {
+    return Intl.message('Войти', name: 'loginButton', desc: '', args: []);
   }
 
   /// `Настройки`
@@ -90,174 +215,39 @@ class AppLocalizations {
     return Intl.message('Настройки', name: 'settings', desc: '', args: []);
   }
 
-  /// `Выберите цвет`
-  String get choose_mode {
-    return Intl.message(
-      'Выберите цвет',
-      name: 'choose_mode',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Белый`
-  String get white {
-    return Intl.message('Белый', name: 'white', desc: '', args: []);
-  }
-
-  /// `Черный`
-  String get black {
-    return Intl.message('Черный', name: 'black', desc: '', args: []);
-  }
-
-  /// `Профиль`
-  String get profile_title {
-    return Intl.message('Профиль', name: 'profile_title', desc: '', args: []);
-  }
-
   /// `Язык`
-  String get profile_language {
-    return Intl.message('Язык', name: 'profile_language', desc: '', args: []);
+  String get language {
+    return Intl.message('Язык', name: 'language', desc: '', args: []);
   }
 
   /// `Тема`
-  String get profile_theme {
-    return Intl.message('Тема', name: 'profile_theme', desc: '', args: []);
+  String get theme {
+    return Intl.message('Тема', name: 'theme', desc: '', args: []);
   }
 
-  /// `Сегодня`
-  String get today {
-    return Intl.message('Сегодня', name: 'today', desc: '', args: []);
-  }
-
-  /// `17 сентября`
-  String get sentabr {
-    return Intl.message('17 сентября', name: 'sentabr', desc: '', args: []);
-  }
-
-  /// `Создать новую задачу`
-  String get create_new_tasks {
-    return Intl.message(
-      'Создать новую задачу',
-      name: 'create_new_tasks',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Название задачи`
-  String get new_tasks {
-    return Intl.message(
-      'Название задачи',
-      name: 'new_tasks',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Категория`
-  String get categories {
-    return Intl.message('Категория', name: 'categories', desc: '', args: []);
-  }
-
-  /// `Начало`
-  String get start_time {
-    return Intl.message('Начало', name: 'start_time', desc: '', args: []);
-  }
-
-  /// `Описание`
-  String get desc {
-    return Intl.message('Описание', name: 'desc', desc: '', args: []);
-  }
-
-  /// `Создать`
-  String get create {
-    return Intl.message('Создать', name: 'create', desc: '', args: []);
-  }
-
-  /// `Дизайн`
-  String get design {
-    return Intl.message('Дизайн', name: 'design', desc: '', args: []);
-  }
-
-  /// `Русский`
-  String get russian {
-    return Intl.message('Русский', name: 'russian', desc: '', args: []);
-  }
-
-  /// `Узбекский`
-  String get uzbek {
-    return Intl.message('Узбекский', name: 'uzbek', desc: '', args: []);
-  }
-
-  /// `Светлый режим`
+  /// `Светлая`
   String get light {
-    return Intl.message('Светлый режим', name: 'light', desc: '', args: []);
+    return Intl.message('Светлая', name: 'light', desc: '', args: []);
   }
 
-  /// `Тёмный режим`
+  /// `Тёмная`
   String get dark {
-    return Intl.message('Тёмный режим', name: 'dark', desc: '', args: []);
+    return Intl.message('Тёмная', name: 'dark', desc: '', args: []);
   }
 
-  /// `Январь`
-  String get january {
-    return Intl.message('Январь', name: 'january', desc: '', args: []);
+  /// `Главная`
+  String get home {
+    return Intl.message('Главная', name: 'home', desc: '', args: []);
   }
 
-  /// `Февраль`
-  String get february {
-    return Intl.message('Февраль', name: 'february', desc: '', args: []);
+  /// `Аналитика`
+  String get analytics {
+    return Intl.message('Аналитика', name: 'analytics', desc: '', args: []);
   }
 
-  /// `Март`
-  String get march {
-    return Intl.message('Март', name: 'march', desc: '', args: []);
-  }
-
-  /// `Апрель`
-  String get april {
-    return Intl.message('Апрель', name: 'april', desc: '', args: []);
-  }
-
-  /// `Май`
-  String get may {
-    return Intl.message('Май', name: 'may', desc: '', args: []);
-  }
-
-  /// `Июнь`
-  String get june {
-    return Intl.message('Июнь', name: 'june', desc: '', args: []);
-  }
-
-  /// `Июль`
-  String get july {
-    return Intl.message('Июль', name: 'july', desc: '', args: []);
-  }
-
-  /// `Август`
-  String get august {
-    return Intl.message('Август', name: 'august', desc: '', args: []);
-  }
-
-  /// `Сентябрь`
-  String get september {
-    return Intl.message('Сентябрь', name: 'september', desc: '', args: []);
-  }
-
-  /// `Октябрь`
-  String get october {
-    return Intl.message('Октябрь', name: 'october', desc: '', args: []);
-  }
-
-  /// `Ноябрь`
-  String get november {
-    return Intl.message('Ноябрь', name: 'november', desc: '', args: []);
-  }
-
-  /// `Декабрь`
-  String get december {
-    return Intl.message('Декабрь', name: 'december', desc: '', args: []);
+  /// `Профиль`
+  String get profile {
+    return Intl.message('Профиль', name: 'profile', desc: '', args: []);
   }
 }
 
@@ -267,6 +257,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'ru'),
+      Locale.fromSubtags(languageCode: 'en'),
       Locale.fromSubtags(languageCode: 'uz'),
     ];
   }

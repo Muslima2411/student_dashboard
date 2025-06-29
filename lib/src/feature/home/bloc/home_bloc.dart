@@ -15,7 +15,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             3,
           ), // 12:03 PM +05, June 27, 2025
           events: {
-            DateTime(2020, 1, 24): [
+            DateTime(2025, 6, 27): [
               {
                 'time': '11:35-13:05',
                 'course': 'IELTS course',
@@ -24,6 +24,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               },
               {
                 'time': '13:15-14:45',
+                'course': 'Mock exam',
+                'room': 'Room 2-188',
+                'instructor': 'Julie Watson',
+              },
+              {
+                'time': '15:15-16:45',
                 'course': 'Mock exam',
                 'room': 'Room 2-188',
                 'instructor': 'Julie Watson',

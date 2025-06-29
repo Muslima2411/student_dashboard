@@ -4,10 +4,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import "package:nested/nested.dart";
 import '../generated/l10n.dart';
+import 'common/routing/app_router.dart';
 import 'feature/analytics/bloc/attendance_bloc.dart';
 import 'feature/auth/bloc/login_bloc.dart';
 import 'feature/home/bloc/home_bloc.dart';
-import 'feature/main/main_wrapper.dart';
 import 'feature/profile/bloc/profile_bloc.dart';
 import 'feature/settings/inherited/local_cubit.dart';
 import 'feature/settings/inherited/theme_controller.dart';
@@ -36,8 +36,8 @@ class MyApp extends StatelessWidget {
             builder: (context, theme) {
               return BlocBuilder<LocaleCubit, Locale>(
                 builder: (context, locale) {
-                  return MaterialApp(
-                    home: MainWrapperPage(),
+                  return MaterialApp.router(
+                    // home: MainWrapperPage(),
                     debugShowCheckedModeBanner: false,
                     onGenerateTitle:
                         (BuildContext context) => "Student dashboard",
@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
                         orElse: () => const Locale("ru"),
                       );
                     },
-                    // routerConfig: AppRouter.router,
+                    routerConfig: AppRouter.router,
                     builder: (BuildContext context, Widget? child) {
                       return MediaQuery.withNoTextScaling(
                         key: builderKey,

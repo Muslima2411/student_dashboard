@@ -78,18 +78,36 @@ class LoginRouteArgs {
 
 /// generated route for
 /// [MainWrapperPage]
-class MainWrapperRoute extends PageRouteInfo<void> {
-  const MainWrapperRoute({List<PageRouteInfo>? children})
-    : super(MainWrapperRoute.name, initialChildren: children);
+class MainWrapperRoute extends PageRouteInfo<MainWrapperRouteArgs> {
+  MainWrapperRoute({Key? key, List<PageRouteInfo>? children})
+    : super(
+        MainWrapperRoute.name,
+        args: MainWrapperRouteArgs(key: key),
+        initialChildren: children,
+      );
 
   static const String name = 'MainWrapperRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return MainWrapperPage();
+      final args = data.argsAs<MainWrapperRouteArgs>(
+        orElse: () => const MainWrapperRouteArgs(),
+      );
+      return MainWrapperPage(key: args.key);
     },
   );
+}
+
+class MainWrapperRouteArgs {
+  const MainWrapperRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'MainWrapperRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
@@ -104,6 +122,22 @@ class ProfileRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const ProfilePage();
+    },
+  );
+}
+
+/// generated route for
+/// [SettingsPage]
+class SettingsRoute extends PageRouteInfo<void> {
+  const SettingsRoute({List<PageRouteInfo>? children})
+    : super(SettingsRoute.name, initialChildren: children);
+
+  static const String name = 'SettingsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SettingsPage();
     },
   );
 }

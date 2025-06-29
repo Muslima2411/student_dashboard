@@ -82,9 +82,9 @@ flutter:
   generate: true
   uses-material-design: true
   assets:
-    - assets/icons/
-    - assets/fonts/Poppins
-    - assets/images/
+    - assets/fonts/Poppins/
+#    - assets/icons/
+#    - assets/images/
 
   fonts:
     - family: Poppins

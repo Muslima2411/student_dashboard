@@ -3,16 +3,11 @@ class Assets {
   Assets._();
 
   static const String poppinsOFL = 'assets/fonts/Poppins/OFL.txt';
-  static const String poppinsPoppinsBlack =
-      'assets/fonts/Poppins/Poppins-Black.ttf';
-  static const String poppinsPoppinsBold =
-      'assets/fonts/Poppins/Poppins-Bold.ttf';
-  static const String poppinsPoppinsExtraBold =
-      'assets/fonts/Poppins/Poppins-ExtraBold.ttf';
-  static const String poppinsPoppinsMedium =
-      'assets/fonts/Poppins/Poppins-Medium.ttf';
-  static const String poppinsPoppinsRegular =
-      'assets/fonts/Poppins/Poppins-Regular.ttf';
-  static const String poppinsPoppinsSemiBold =
-      'assets/fonts/Poppins/Poppins-SemiBold.ttf';
+  static const String poppinsPoppinsBlack = 'assets/fonts/Poppins/Poppins-Black.ttf';
+  static const String poppinsPoppinsBold = 'assets/fonts/Poppins/Poppins-Bold.ttf';
+  static const String poppinsPoppinsExtraBold = 'assets/fonts/Poppins/Poppins-ExtraBold.ttf';
+  static const String poppinsPoppinsMedium = 'assets/fonts/Poppins/Poppins-Medium.ttf';
+  static const String poppinsPoppinsRegular = 'assets/fonts/Poppins/Poppins-Regular.ttf';
+  static const String poppinsPoppinsSemiBold = 'assets/fonts/Poppins/Poppins-SemiBold.ttf';
+
 }

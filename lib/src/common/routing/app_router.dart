@@ -6,41 +6,45 @@ import '../../feature/auth/login_page.dart';
 import '../../feature/home/home_page.dart';
 import '../../feature/main/main_wrapper.dart';
 import '../../feature/profile/profile_page.dart';
+import '../../feature/profile/settings_page.dart';
 
 part 'app_router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
 class AppRouter extends RootStackRouter {
+  static final RouterConfig<UrlState> router = AppRouter().config();
+
   @override
   RouteType get defaultRouteType => const RouteType.adaptive();
 
   @override
   List<AutoRoute> get routes => <AutoRoute>[
+    AutoRoute(path: '/login', page: LoginRoute.page, initial: true),
+    AutoRoute(path: '/settings', page: SettingsRoute.page),
+
     AutoRoute(
-      page: LoginRoute.page,
-      initial: true, // Login as the initial route
-    ),
-    AutoRoute(
+      path: '/',
+      // initial: true,
       page: MainWrapperRoute.page,
       children: [
-        AutoRoute(path: 'home', page: HomeRoute.page, initial: true),
+        AutoRoute(path: 'home', page: HomeRoute.page),
         AutoRoute(path: 'analytics', page: AnalyticsRoute.page),
         AutoRoute(path: 'profile', page: ProfileRoute.page),
       ],
-      guards: [AuthGuard()],
+      // guards: [AuthGuard()],
     ),
   ];
 }
 
-// Optional: Define a simple AuthGuard for authentication
-class AuthGuard extends AutoRouteGuard {
-  @override
-  void onNavigation(NavigationResolver resolver, StackRouter router) {
-    const isAuthenticated = false;
-    if (isAuthenticated) {
-      resolver.next();
-    } else {
-      router.push(LoginRoute());
-    }
-  }
-}
+// // Optional: Define a simple AuthGuard for authentication
+// class AuthGuard extends AutoRouteGuard {
+//   @override
+//   void onNavigation(NavigationResolver resolver, StackRouter router) {
+//     const isAuthenticated = false;
+//     if (isAuthenticated) {
+//       resolver.next();
+//     } else {
+//       router.push(LoginRoute());
+//     }
+//   }
+// }
