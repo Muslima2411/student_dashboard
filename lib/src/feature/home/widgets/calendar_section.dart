@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:student_dashboard_app/src/common/utils/extensions/context_extensions.dart';
 
 class WeekCalendarSection extends StatefulWidget {
   final DateTime selectedDate;
@@ -29,8 +30,10 @@ class _WeekCalendarSectionState extends State<WeekCalendarSection> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = context.colorScheme;
+
     return Column(
-      spacing: 12.h,
+      spacing: 10.h,
       children: [
         TableCalendar(
           firstDay: DateTime.utc(2020),
@@ -39,7 +42,7 @@ class _WeekCalendarSectionState extends State<WeekCalendarSection> {
           currentDay: _selectedDay,
           calendarFormat: CalendarFormat.week,
           startingDayOfWeek: StartingDayOfWeek.sunday,
-          daysOfWeekVisible: true,
+          daysOfWeekVisible: false, // Hide default weekday labels
           headerVisible: false,
           onDaySelected: (selectedDay, focusedDay) {
             setState(() {
@@ -54,55 +57,60 @@ class _WeekCalendarSectionState extends State<WeekCalendarSection> {
             outsideDaysVisible: false,
             cellMargin: EdgeInsets.zero,
           ),
-          daysOfWeekHeight: 0, // Hide default weekday labels
+          daysOfWeekHeight: 0,
           calendarBuilders: CalendarBuilders(
             defaultBuilder: (context, day, focusedDay) {
-              return _buildDayItem(day, isSelected: false);
+              return _buildDayItem(context, day, isSelected: false);
             },
             selectedBuilder: (context, day, focusedDay) {
-              return _buildDayItem(day, isSelected: true);
+              return _buildDayItem(context, day, isSelected: true);
             },
           ),
         ),
-        const Divider(height: 1, thickness: 1, color: Color(0xFFE2E8F0)),
+        Divider(
+          height: 1,
+          thickness: 1,
+          color: colorScheme.outline.withOpacity(0.4),
+        ),
       ],
     );
   }
 
-  Widget _buildDayItem(DateTime day, {required bool isSelected}) {
-    final String weekdayLetter =
-        day.weekday == DateTime.sunday
-            ? 'S'
-            : day.weekday == DateTime.monday
-            ? 'M'
-            : day.weekday == DateTime.tuesday
-            ? 'T'
-            : day.weekday == DateTime.wednesday
-            ? 'W'
-            : day.weekday == DateTime.thursday
-            ? 'T'
-            : day.weekday == DateTime.friday
-            ? 'F'
-            : 'S';
+  Widget _buildDayItem(
+    BuildContext context,
+    DateTime day, {
+    required bool isSelected,
+  }) {
+    final colorScheme = context.colorScheme;
+
+    final weekdayShort =
+        [
+          context.localized.sundayShort,
+          context.localized.mondayShort,
+          context.localized.tuesdayShort,
+          context.localized.wednesdayShort,
+          context.localized.thursdayShort,
+          context.localized.fridayShort,
+          context.localized.saturdayShort,
+        ][day.weekday % 7]; // sunday == 7 → 0 index
 
     return Center(
       child: Container(
-        // padding: EdgeInsets.symmetric(vertical: 8.h),
         width: 44,
         height: 60,
         decoration: BoxDecoration(
-          color: isSelected ? const Color(0xFFA3C7F7) : Colors.transparent,
+          color: isSelected ? colorScheme.primary : Colors.transparent,
           borderRadius: BorderRadius.circular(10.r),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              weekdayLetter,
+              weekdayShort,
               style: TextStyle(
                 fontSize: 14.sp,
-                color: isSelected ? Colors.white : const Color(0xFFA0AEC0),
                 fontWeight: FontWeight.w500,
+                color: isSelected ? Colors.white : colorScheme.outline,
               ),
             ),
             const SizedBox(height: 4),
@@ -111,7 +119,7 @@ class _WeekCalendarSectionState extends State<WeekCalendarSection> {
               style: TextStyle(
                 fontSize: 18.sp,
                 fontWeight: FontWeight.w600,
-                color: isSelected ? Colors.white : const Color(0xFF1A202C),
+                color: isSelected ? Colors.white : colorScheme.onSurface,
               ),
             ),
           ],

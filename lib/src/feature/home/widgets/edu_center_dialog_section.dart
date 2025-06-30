@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:student_dashboard_app/src/common/styles/app_colors.dart';
 import '../bloc/home_bloc.dart';
 import '../bloc/home_event.dart';
 import '../bloc/home_state.dart';
@@ -17,13 +17,13 @@ class EduCenterDialog extends StatelessWidget {
     },
     {
       'name': 'IELTS Zone',
-      'subtitle': 'Up to 20 users and 40GB data.',
+      'subtitle': 'some kinda educenter',
       'icon': Icons.language,
       'color': Colors.purple,
     },
     {
       'name': 'Educational Center',
-      'subtitle': 'Unlimited users and data.',
+      'subtitle': 'some kinda educenter',
       'icon': Icons.flash_on,
       'color': Colors.amber,
     },
@@ -31,21 +31,21 @@ class EduCenterDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Dialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-        child: const Column(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      backgroundColor: colorScheme.background,
+      child: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+        child: Column(
           mainAxisSize: MainAxisSize.min,
-          spacing: 25,
           children: [
-            // DialogHeader(),
-            // SizedBox(height: 10),
-            // DialogTitle(),
-            // SizedBox(height: 20),
+            DialogHeader(),
+            SizedBox(height: 10),
+            DialogTitle(),
+            SizedBox(height: 20),
             EduCenterOptions(),
-            // SizedBox(height: 20),
-            // DialogActions(),
           ],
         ),
       ),
@@ -58,13 +58,15 @@ class DialogHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Icon(Icons.calendar_today, size: 24),
+        Icon(Icons.school, size: 24, color: colorScheme.primary),
         IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: const Icon(Icons.close),
+          icon: Icon(Icons.close, color: colorScheme.onBackground),
         ),
       ],
     );
@@ -76,12 +78,14 @@ class DialogTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Text(
       'Choose an educational center',
       style: TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w600,
-        color: Color(0xFF2D3748),
+        color: colorScheme.onBackground,
       ),
     );
   }
@@ -106,6 +110,7 @@ class EduCenterOptions extends StatelessWidget {
                     context.read<HomeBloc>().add(
                       ChangeEduCenter(center['name']),
                     );
+                    Navigator.pop(context);
                   },
                 );
               }).toList(),
@@ -129,16 +134,18 @@ class EduCenterOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
         color:
             isSelected
-                ? const Color(0xFF3182CE).withOpacity(0.1)
-                : Colors.grey[50],
+                ? colorScheme.primary.withOpacity(0.1)
+                : colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isSelected ? const Color(0xFF3182CE) : Colors.grey[200]!,
+          color: isSelected ? colorScheme.primary : AppColors.lightNavbarIcon,
           width: isSelected ? 2 : 1,
         ),
       ),
@@ -146,10 +153,10 @@ class EduCenterOption extends StatelessWidget {
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         leading: EduCenterIcon(icon: center['icon'], color: center['color']),
         title: EduCenterTitle(name: center['name'], isSelected: isSelected),
-        // subtitle: EduCenterSubtitle(subtitle: center['subtitle']),
+        subtitle: EduCenterSubtitle(subtitle: center['subtitle']),
         trailing:
             isSelected
-                ? const Icon(Icons.check_circle, color: Color(0xFF3182CE))
+                ? Icon(Icons.check_circle, color: colorScheme.primary)
                 : null,
         onTap: onTap,
       ),
@@ -168,7 +175,7 @@ class EduCenterIcon extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withOpacity(0.15),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Icon(icon, color: color, size: 20),
@@ -188,11 +195,13 @@ class EduCenterTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Text(
       name,
       style: TextStyle(
         fontWeight: FontWeight.w600,
-        color: isSelected ? const Color(0xFF3182CE) : const Color(0xFF2D3748),
+        color: isSelected ? colorScheme.primary : colorScheme.onSurface,
       ),
     );
   }
@@ -205,75 +214,13 @@ class EduCenterSubtitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Text(
       subtitle,
-      style: const TextStyle(fontSize: 12, color: Color(0xFF718096)),
-    );
-  }
-}
-
-class DialogActions extends StatelessWidget {
-  const DialogActions({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ConfirmButton(onPressed: () => Navigator.pop(context)),
-        const SizedBox(height: 10),
-        CancelButton(onPressed: () => Navigator.pop(context)),
-      ],
-    );
-  }
-}
-
-class ConfirmButton extends StatelessWidget {
-  final VoidCallback onPressed;
-
-  const ConfirmButton({super.key, required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF3182CE),
-          foregroundColor: Colors.white,
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          elevation: 0,
-        ),
-        child: const Text(
-          'Confirm',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-        ),
-      ),
-    );
-  }
-}
-
-class CancelButton extends StatelessWidget {
-  final VoidCallback onPressed;
-
-  const CancelButton({super.key, required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: TextButton(
-        onPressed: onPressed,
-        style: TextButton.styleFrom(
-          padding: const EdgeInsets.symmetric(vertical: 16),
-        ),
-        child: const Text(
-          'Cancel',
-          style: TextStyle(fontSize: 16, color: Color(0xFF718096)),
-        ),
+      style: TextStyle(
+        fontSize: 12,
+        color: colorScheme.onSurface.withOpacity(0.6),
       ),
     );
   }

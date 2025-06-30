@@ -31,5 +31,22 @@
   "dark": "Dark",
   "home": "Home",
   "analytics": "Analytics",
-  "profile": "Profile"
+  "profile": "Profile",
+  "sundayShort": "S",
+  "mondayShort": "M",
+  "tuesdayShort": "T",
+  "wednesdayShort": "W",
+  "thursdayShort": "T",
+  "fridayShort": "F",
+  "saturdayShort": "S",
+  "username": "Username",
+  "phone": "Phone",
+  "profileInfo": "Profile Information",
+  "changePassword": "Change Password",
+  "logout": "Log out",
+  "save": "Save"
+
 }
+
+
+

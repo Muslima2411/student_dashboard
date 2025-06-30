@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:student_dashboard_app/src/common/styles/app_colors.dart';
 
 class EventCard extends StatelessWidget {
   final Map<String, String> event;
@@ -12,10 +13,12 @@ class EventCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isHighlighted ? const Color(0xFF539DF3) : Colors.white,
+        color: isHighlighted ? colorScheme.primary : AppColors.secondary,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
@@ -54,12 +57,16 @@ class EventTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final colorScheme = Theme.of(context).colorScheme;
+    // final color = isHighlighted ? colorScheme.onPrimary : colorScheme.onSurface;
+    const color = AppColors.black;
+
     return Text(
       title,
-      style: TextStyle(
+      style: const TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w600,
-        color: isHighlighted ? Colors.white : const Color(0xFF2D3748),
+        color: color,
       ),
     );
   }
@@ -77,21 +84,19 @@ class EventLocation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final colorScheme = Theme.of(context).colorScheme;
+    // final color =
+    //     isHighlighted
+    //         ? colorScheme.onPrimary.withOpacity(0.7)
+    //         : colorScheme.onSurfaceVariant;
+
+    const color = AppColors.black;
+
     return Row(
       children: [
-        Icon(
-          Icons.location_on_outlined,
-          size: 16,
-          color: isHighlighted ? Colors.white70 : const Color(0xFF718096),
-        ),
+        const Icon(Icons.location_on_outlined, size: 16, color: color),
         const SizedBox(width: 4),
-        Text(
-          room,
-          style: TextStyle(
-            fontSize: 14,
-            color: isHighlighted ? Colors.white70 : const Color(0xFF718096),
-          ),
-        ),
+        Text(room, style: const TextStyle(fontSize: 14, color: color)),
       ],
     );
   }
@@ -109,26 +114,28 @@ class EventInstructor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final colorScheme = Theme.of(context).colorScheme;
+
+    // final backgroundColor =
+    //     isHighlighted ? colorScheme.onPrimary : colorScheme.primary;
+    // final iconColor =
+    //     isHighlighted ? colorScheme.primary : colorScheme.onPrimary;
+    // final textColor =
+    //     isHighlighted
+    //         ? colorScheme.onPrimary.withOpacity(0.7)
+    //         : colorScheme.onSurfaceVariant;
+
+    const color = AppColors.black;
+
     return Row(
       children: [
-        CircleAvatar(
+        const CircleAvatar(
           radius: 8,
-          backgroundColor:
-              isHighlighted ? Colors.white : const Color(0xFF539DF3),
-          child: Icon(
-            Icons.person,
-            size: 10,
-            color: isHighlighted ? const Color(0xFF3182CE) : Colors.white,
-          ),
+          backgroundColor: AppColors.white,
+          child: Icon(Icons.person, size: 10, color: color),
         ),
         const SizedBox(width: 6),
-        Text(
-          instructor,
-          style: TextStyle(
-            fontSize: 14,
-            color: isHighlighted ? Colors.white70 : const Color(0xFF718096),
-          ),
-        ),
+        Text(instructor, style: const TextStyle(fontSize: 14, color: color)),
       ],
     );
   }

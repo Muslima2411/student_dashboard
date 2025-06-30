@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_dashboard_app/src/common/utils/extensions/context_extensions.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-
 import 'bloc/attendance_bloc.dart';
 import 'bloc/attendance_event.dart';
 import 'bloc/attendance_state.dart';
@@ -25,29 +24,32 @@ class AnalyticsPageState extends State<AnalyticsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textColor = colorScheme.onBackground;
+
     return Scaffold(
-      backgroundColor: const Color(0xFFFAF9F9),
+      backgroundColor: colorScheme.background,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(28, 32, 24, 10),
+              padding: const EdgeInsets.fromLTRB(28, 32, 24, 20),
               child: Text(
                 context.localized.attendance,
-                style: const TextStyle(
-                  fontSize: 24,
+                style: TextStyle(
+                  fontSize: 28,
                   fontWeight: FontWeight.w500,
-                  color: Colors.black87,
+                  color: textColor,
                 ),
               ),
             ),
             Expanded(
               child: Container(
                 padding: const EdgeInsets.all(20),
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
+                decoration: BoxDecoration(
+                  color: colorScheme.onPrimary,
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(24),
                     topRight: Radius.circular(24),
                   ),
@@ -60,11 +62,13 @@ class AnalyticsPageState extends State<AnalyticsPage> {
                           context: context,
                           courseKey: 'ieltsCourse',
                           state: state,
+                          textColor: textColor,
                         ),
                         const SizedBox(height: 16),
                         _buildCourseSection(
                           context: context,
                           courseKey: 'grammarCourse',
+                          textColor: textColor,
                           state: state,
                         ),
                       ],
@@ -83,8 +87,11 @@ class AnalyticsPageState extends State<AnalyticsPage> {
     required BuildContext context,
     required String courseKey,
     required AttendanceState state,
+    required Color textColor,
   }) {
     const courseName = "IELTS";
+
+    final colorScheme = Theme.of(context).colorScheme;
 
     final courseData = state.chartData.firstWhere(
       (data) => data.course == courseName,
@@ -104,10 +111,8 @@ class AnalyticsPageState extends State<AnalyticsPage> {
         children: [
           Container(
             width: 4,
-            decoration: const BoxDecoration(
-              border: Border(
-                left: BorderSide(color: Color(0xFF1E3A8A), width: 2),
-              ),
+            decoration: BoxDecoration(
+              border: Border(left: BorderSide(color: textColor, width: 2)),
             ),
           ),
           const SizedBox(width: 12),
@@ -118,27 +123,20 @@ class AnalyticsPageState extends State<AnalyticsPage> {
               children: [
                 Text(
                   courseName,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF1E3A8A),
+                    color: textColor,
                   ),
                 ),
                 const SizedBox(height: 4),
                 Row(
                   children: [
-                    const Icon(
-                      Icons.circle_outlined,
-                      size: 12,
-                      color: Color(0xFF1E3A8A),
-                    ),
+                    Icon(Icons.circle_outlined, size: 12, color: textColor),
                     const SizedBox(width: 4),
                     Text(
                       '(${courseData.attendance}/${courseData.total}) - ${courseData.percent}%',
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: Color(0xFF1E3A8A),
-                      ),
+                      style: TextStyle(fontSize: 14, color: textColor),
                     ),
                   ],
                 ),
@@ -159,7 +157,7 @@ class AnalyticsPageState extends State<AnalyticsPage> {
                               percent: courseData.percent,
                               attendance: courseData.attendance,
                               total: courseData.total,
-                              color: courseData.color ?? Colors.green,
+                              color: courseData.color ?? textColor,
                             ),
                             ChartData(
                               course: courseName,
@@ -167,7 +165,7 @@ class AnalyticsPageState extends State<AnalyticsPage> {
                               attendance:
                                   courseData.total - courseData.attendance,
                               total: courseData.total,
-                              color: Colors.grey,
+                              color: colorScheme.outlineVariant,
                             ),
                           ],
                           xValueMapper: (ChartData data, _) => data.course,
@@ -176,13 +174,13 @@ class AnalyticsPageState extends State<AnalyticsPage> {
                           dataLabelMapper:
                               (ChartData data, _) =>
                                   '${data.attendance}/${data.total} - ${data.percent}%',
-                          dataLabelSettings: const DataLabelSettings(
-                            isVisible: true,
-                            textStyle: TextStyle(
-                              color: Colors.black,
-                              fontSize: 12,
-                            ),
-                          ),
+                          // dataLabelSettings: const DataLabelSettings(
+                          //   isVisible: true,
+                          //   textStyle: TextStyle(
+                          //     color: Colors.black,
+                          //     fontSize: 12,
+                          //   ),
+                          // ),
                           animationDuration: 1000,
                         ),
                       ],

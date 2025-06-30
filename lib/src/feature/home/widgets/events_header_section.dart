@@ -7,18 +7,27 @@ class EventsHeaderSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textColor = context.colorScheme.outline;
+
     return Row(
       children: [
         Text(
           context.localized.time,
-          style: TextStyle(fontSize: 14.sp, color: const Color(0xFF718096)),
+          style: TextStyle(
+            fontSize: 14.sp,
+            color: textColor,
+            fontWeight: FontWeight.w500,
+          ),
         ),
         SizedBox(width: 34.w),
         Text(
           context.localized.course,
-          style: TextStyle(fontSize: 14.sp, color: const Color(0xFF718096)),
+          style: TextStyle(
+            fontSize: 14.sp,
+            color: textColor,
+            fontWeight: FontWeight.w500,
+          ),
         ),
-        // Optional: add sort/filter icon later
       ],
     );
   }

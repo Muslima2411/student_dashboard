@@ -2,8 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_dashboard_app/src/common/utils/extensions/context_extensions.dart';
-
-import '../../common/routing/app_router.dart';
+import 'package:student_dashboard_app/src/common/styles/app_colors.dart';
+import 'package:student_dashboard_app/src/common/styles/color_scheme.dart';
+import 'package:student_dashboard_app/src/common/routing/app_router.dart';
 import 'bloc/profile_bloc.dart';
 import 'bloc/profile_event.dart';
 import 'bloc/profile_state.dart';
@@ -13,10 +14,10 @@ class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  ProfilePageState createState() => ProfilePageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
@@ -25,8 +26,11 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = context.colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
-      backgroundColor: const Color(0xFFFAF9F9),
+      backgroundColor: colorScheme.onPrimary,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -34,10 +38,8 @@ class _ProfilePageState extends State<ProfilePage> {
             padding: const EdgeInsets.only(top: 50, left: 16, right: 16),
             child: Text(
               context.localized.myProfile,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w500,
-                color: Colors.black87,
+              style: textTheme.headlineSmall?.copyWith(
+                color: colorScheme.onBackground,
               ),
             ),
           ),
@@ -48,16 +50,18 @@ class _ProfilePageState extends State<ProfilePage> {
                   padding: const EdgeInsets.all(16.0),
                   children: [
                     const SizedBox(height: 14),
-
                     Row(
                       children: [
                         const CircleAvatar(
                           radius: 30,
-                          backgroundColor: Colors.orange,
-                          child: Icon(
-                            Icons.person,
-                            size: 40,
-                            color: Colors.white,
+                          backgroundColor: AppColors.primary,
+                          child: Text(
+                            "J",
+                            style: TextStyle(
+                              color: AppColors.white,
+                              fontSize: 36,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                         const SizedBox(width: 16),
@@ -66,19 +70,26 @@ class _ProfilePageState extends State<ProfilePage> {
                           children: [
                             Text(
                               state.name,
-                              style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
+                              style: textTheme.titleMedium?.copyWith(
+                                color: colorScheme.onBackground,
                               ),
                             ),
-                            Text(state.id),
+                            Text(
+                              state.id,
+                              style: textTheme.bodyMedium?.copyWith(
+                                color: colorScheme.onBackground,
+                              ),
+                            ),
                           ],
                         ),
                         const Spacer(),
                         Builder(
                           builder:
                               (context) => IconButton(
-                                icon: const Icon(Icons.settings),
+                                icon: Icon(
+                                  Icons.settings,
+                                  color: colorScheme.onSecondary,
+                                ),
                                 onPressed: () {
                                   context.router.push(const SettingsRoute());
                                 },
@@ -88,36 +99,26 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
 
                     const SizedBox(height: 34),
-
                     Text(
                       context.localized.contactDetails,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
+                      style: textTheme.titleSmall?.copyWith(
+                        color: colorScheme.onBackground,
                       ),
                     ),
                     const SizedBox(height: 12),
-                    _infoRow(context.localized.contactNo, state.contactNo),
-                    _infoRow(context.localized.email, state.email),
-                    _infoRow(context.localized.address, state.address),
+                    _infoRow(
+                      context.localized.contactNo,
+                      state.contactNo,
+                      context,
+                    ),
+                    _infoRow(context.localized.email, state.email, context),
+                    _infoRow(context.localized.address, state.address, context),
 
-                    // Align(
-                    //   alignment: Alignment.centerRight,
-                    //   child: TextButton(
-                    //     onPressed:
-                    //         () => context.read<ProfileBloc>().add(
-                    //           const EditContactDetails(),
-                    //         ),
-                    //     child: Text(context.localized.edit),
-                    //   ),
-                    // ),
                     const SizedBox(height: 24),
-
                     Text(
                       context.localized.ongoingCourses,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
+                      style: textTheme.titleSmall?.copyWith(
+                        color: colorScheme.onBackground,
                       ),
                     ),
                     const SizedBox(height: 12),
@@ -126,7 +127,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         padding: const EdgeInsets.symmetric(vertical: 6.0),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: const Color(0xFFA3C7F7),
+                            color: AppColors.secondary,
                             borderRadius: BorderRadius.circular(16),
                           ),
                           padding: const EdgeInsets.all(16),
@@ -135,10 +136,8 @@ class _ProfilePageState extends State<ProfilePage> {
                             children: [
                               Text(
                                 course['name']!,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white,
+                                style: textTheme.titleMedium?.copyWith(
+                                  color: AppColors.white,
                                 ),
                               ),
                               const SizedBox(height: 8),
@@ -147,14 +146,14 @@ class _ProfilePageState extends State<ProfilePage> {
                                   const Icon(
                                     Icons.calendar_today,
                                     size: 16,
-                                    color: Colors.white,
+                                    color: AppColors.white,
                                   ),
                                   const SizedBox(width: 8),
                                   Text(
                                     course['days']!,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
+                                    style: textTheme.bodySmall?.copyWith(
+                                      color: AppColors.white,
+                                      fontSize: 12,
                                     ),
                                   ),
                                 ],
@@ -166,12 +165,10 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
 
                     const SizedBox(height: 24),
-
                     Text(
                       context.localized.eduCenters,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
+                      style: textTheme.titleSmall?.copyWith(
+                        color: colorScheme.onBackground,
                       ),
                     ),
                     const SizedBox(height: 12),
@@ -183,7 +180,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             Color backgroundColor;
                             switch (center) {
                               case 'Everest':
-                                backgroundColor = const Color(0xFFA3C7F7);
+                                backgroundColor = AppColors.secondary;
                                 break;
                               case 'IELTS Zone':
                                 backgroundColor = const Color(0xFFBBB9F3);
@@ -213,17 +210,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                     child: Icon(
                                       Icons.school,
                                       size: 14,
-                                      color: Colors.white,
+                                      color: AppColors.white,
                                     ),
                                   ),
                                   const SizedBox(width: 8),
-                                  Text(
-                                    center,
-                                    style: const TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.black87,
-                                    ),
-                                  ),
+                                  Text(center, style: textTheme.bodyMedium),
                                 ],
                               ),
                             );
@@ -241,12 +232,25 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  Widget _infoRow(String label, String value) {
+  Widget _infoRow(String label, String value, BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text(label), Text(value)],
+        children: [
+          Text(
+            label,
+            style: context.textTheme.bodyMedium?.copyWith(
+              color: context.colorScheme.onBackground,
+            ),
+          ),
+          Text(
+            value,
+            style: context.textTheme.bodyMedium?.copyWith(
+              color: context.colorScheme.onBackground,
+            ),
+          ),
+        ],
       ),
     );
   }

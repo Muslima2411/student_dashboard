@@ -20,7 +20,7 @@ class MainWrapperPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
-      backgroundColor: const Color(0xFFEDEDED),
+      backgroundColor: context.colorScheme.tertiary,
       context,
       screens: _navScreens,
       items: [

@@ -31,5 +31,19 @@
   "dark": "Тёмная",
   "home": "Главная",
   "analytics": "Аналитика",
-  "profile": "Профиль"
+  "profile": "Профиль",
+  "sundayShort": "Вс",
+  "mondayShort": "Пн",
+  "tuesdayShort": "Вт",
+  "wednesdayShort": "Ср",
+  "thursdayShort": "Чт",
+  "fridayShort": "Пт",
+  "saturdayShort": "Сб",
+  "username": "Имя пользователя",
+  "phone": "Телефон",
+  "profileInfo": "Информация профиля",
+  "changePassword": "Сменить пароль",
+  "logout": "Выйти",
+  "save": "Сохранить"
+
 }

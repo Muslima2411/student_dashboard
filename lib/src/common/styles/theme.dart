@@ -1,45 +1,53 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart'
-    show AppBarTheme, Brightness, ThemeData, ThemeMode, immutable;
+    show AppBarTheme, Brightness, Colors, ThemeData, ThemeMode, immutable;
 import 'package:student_dashboard_app/src/common/styles/text_style.dart';
 
 import 'app_colors.dart';
 import 'color_scheme.dart';
 
-ThemeData lightMode = ThemeData(
-  // fontFamily: GoogleFonts.Poppins().fontFamily,
+/// Light Theme
+final ThemeData lightMode = ThemeData(
   textTheme: const AppTextStyle(),
   brightness: Brightness.light,
   colorScheme: lightColorScheme,
   useMaterial3: true,
-  scaffoldBackgroundColor: AppColors.backgroundLight,
-  appBarTheme: const AppBarTheme(backgroundColor: AppColors.backgroundLight),
+  scaffoldBackgroundColor: AppColors.lightBackground,
+  appBarTheme: const AppBarTheme(
+    backgroundColor: AppColors.lightBackground,
+    elevation: 0,
+    surfaceTintColor: Colors.transparent,
+  ),
 );
 
-ThemeData darkMode = ThemeData(
-  // fontFamily: GoogleFonts.Poppins().fontFamily,
+/// Dark Theme
+final ThemeData darkMode = ThemeData(
   textTheme: const AppTextStyle(),
   brightness: Brightness.dark,
   colorScheme: darkColorScheme,
   useMaterial3: true,
-  scaffoldBackgroundColor: AppColors.backgroundDark,
-  appBarTheme: const AppBarTheme(backgroundColor: AppColors.backgroundDark),
+  scaffoldBackgroundColor: AppColors.darkBackground,
+  appBarTheme: const AppBarTheme(
+    backgroundColor: AppColors.darkBackground,
+    elevation: 0,
+    surfaceTintColor: Colors.transparent,
+  ),
 );
 
 @immutable
 final class AppTheme {
-  /// {@macro app_theme}
-  AppTheme({required this.mode}) : darkTheme = darkMode, lightTheme = lightMode;
+  AppTheme({required this.mode}) : lightTheme = lightMode, darkTheme = darkMode;
 
   final ThemeMode mode;
-  final ThemeData darkTheme;
   final ThemeData lightTheme;
+  final ThemeData darkTheme;
 
   static ThemeData light() => lightMode;
 
   static ThemeData dark() => darkMode;
 
+  /// Computes theme based on selected mode
   ThemeData computeTheme() {
     switch (mode) {
       case ThemeMode.light:
@@ -47,9 +55,8 @@ final class AppTheme {
       case ThemeMode.dark:
         return darkTheme;
       case ThemeMode.system:
-        return PlatformDispatcher.instance.platformBrightness == Brightness.dark
-            ? darkTheme
-            : lightTheme;
+        final brightness = PlatformDispatcher.instance.platformBrightness;
+        return brightness == Brightness.dark ? darkTheme : lightTheme;
     }
   }
 

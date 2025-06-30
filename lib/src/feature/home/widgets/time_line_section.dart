@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:student_dashboard_app/src/common/utils/extensions/context_extensions.dart';
 import 'emty_event_widget.dart';
 import 'event_section.dart';
 
@@ -10,9 +10,7 @@ class EventsListSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (events.isEmpty) {
-      return const EmptyEventsWidget();
-    }
+    if (events.isEmpty) return const EmptyEventsWidget();
 
     return ListView.builder(
       itemCount: events.length,
@@ -80,6 +78,7 @@ class EventTimeColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final times = timeRange.split('-');
+    final scheme = context.colorScheme;
 
     return SizedBox(
       width: 50,
@@ -88,16 +87,13 @@ class EventTimeColumn extends StatelessWidget {
         children: [
           Text(
             times[0],
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF2D3748),
+              color: scheme.onSurface,
             ),
           ),
-          Text(
-            times[1],
-            style: const TextStyle(fontSize: 12, color: Color(0xFF718096)),
-          ),
+          Text(times[1], style: TextStyle(fontSize: 12, color: scheme.outline)),
         ],
       ),
     );
@@ -118,23 +114,22 @@ class TimelineIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scheme = context.colorScheme;
+
+    final inactiveColor = scheme.onSecondary;
+
     return Column(
       children: [
-        if (!isFirst)
-          Container(width: 2, height: 15, color: const Color(0xFFE2E8F0)),
+        if (!isFirst) Container(width: 2, height: 15, color: inactiveColor),
         Container(
           width: 12,
           height: 12,
           decoration: BoxDecoration(
-            color:
-                isHighlighted
-                    ? const Color(0xFF3182CE)
-                    : const Color(0xFFE2E8F0),
+            color: inactiveColor,
             shape: BoxShape.circle,
           ),
         ),
-        if (!isLast)
-          Expanded(child: Container(width: 2, color: const Color(0xFFE2E8F0))),
+        if (!isLast) Expanded(child: Container(width: 2, color: inactiveColor)),
       ],
     );
   }

@@ -31,5 +31,19 @@
   "dark": "Qorong'i",
   "home": "Bosh sahifa",
   "analytics": "Tahlil",
-  "profile": "Profil"
+  "profile": "Profil",
+  "sundayShort": "Yak",
+  "mondayShort": "Dush",
+  "tuesdayShort": "Sesh",
+  "wednesdayShort": "Chor",
+  "thursdayShort": "Pay",
+  "fridayShort": "Jum",
+  "saturdayShort": "Shan",
+  "username": "Foydalanuvchi nomi",
+  "phone": "Telefon raqami",
+  "profileInfo": "Profil ma'lumotlari",
+  "changePassword": "Parolni o‘zgartirish",
+  "logout": "Chiqish",
+  "save": "Saqlash"
+
 }

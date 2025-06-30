@@ -1,11 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:student_dashboard_app/src/common/utils/extensions/context_extensions.dart';
 import 'package:student_dashboard_app/src/feature/home/widgets/calendar_section.dart';
 import 'package:student_dashboard_app/src/feature/home/widgets/edu_center_dialog_section.dart';
 import 'package:student_dashboard_app/src/feature/home/widgets/events_header_section.dart';
 import 'package:student_dashboard_app/src/feature/home/widgets/header_section.dart';
 import 'package:student_dashboard_app/src/feature/home/widgets/time_line_section.dart';
+
 import 'bloc/home_bloc.dart';
 import 'bloc/home_event.dart';
 import 'bloc/home_state.dart';
@@ -33,7 +36,7 @@ class HomePageState extends State<HomePage> {
             [];
 
         return Scaffold(
-          backgroundColor: const Color(0xFFFAF9F9),
+          backgroundColor: context.colorScheme.background,
           body: SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,9 +50,9 @@ class HomePageState extends State<HomePage> {
                 Expanded(
                   child: Container(
                     padding: const EdgeInsets.all(20),
-                    decoration: const BoxDecoration(
-                      color: Color(0xFFFFFFFF),
-                      borderRadius: BorderRadius.only(
+                    decoration: BoxDecoration(
+                      color: context.colorScheme.onPrimary,
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(24),
                         topRight: Radius.circular(24),
                       ),
@@ -65,9 +68,9 @@ class HomePageState extends State<HomePage> {
                             );
                           },
                         ),
-                        const SizedBox(height: 30),
+                        SizedBox(height: 20.h),
                         const EventsHeaderSection(),
-                        const SizedBox(height: 15),
+                        SizedBox(height: 15.h),
                         Expanded(child: EventsListSection(events: events)),
                       ],
                     ),

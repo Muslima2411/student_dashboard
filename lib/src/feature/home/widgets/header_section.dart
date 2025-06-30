@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:student_dashboard_app/src/common/utils/extensions/context_extensions.dart';
 
 import 'edu_center_button.dart';
 
@@ -38,26 +39,29 @@ class DateDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dateTextColor = context.colorScheme.onBackground;
+    final subTextColor = context.colorScheme.onSurfaceVariant;
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           DateFormat('dd').format(selectedDate),
-          style: const TextStyle(
+          style: Theme.of(context).textTheme.displaySmall?.copyWith(
             fontSize: 44,
             fontWeight: FontWeight.w500,
-            color: Color(0xFF1A202C),
+            color: dateTextColor,
             height: 0.9,
           ),
         ),
         SizedBox(width: 7.w),
         Text(
           '${DateFormat('EEE').format(selectedDate)}\n${DateFormat('MMM yyyy').format(selectedDate)}',
-          style: const TextStyle(
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             fontSize: 14,
             fontWeight: FontWeight.w500,
-            color: Color(0xFFA0AEC0),
+            color: subTextColor,
             height: 1.2,
           ),
         ),

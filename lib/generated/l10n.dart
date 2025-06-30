@@ -249,6 +249,86 @@ class AppLocalizations {
   String get profile {
     return Intl.message('Профиль', name: 'profile', desc: '', args: []);
   }
+
+  /// `Вс`
+  String get sundayShort {
+    return Intl.message('Вс', name: 'sundayShort', desc: '', args: []);
+  }
+
+  /// `Пн`
+  String get mondayShort {
+    return Intl.message('Пн', name: 'mondayShort', desc: '', args: []);
+  }
+
+  /// `Вт`
+  String get tuesdayShort {
+    return Intl.message('Вт', name: 'tuesdayShort', desc: '', args: []);
+  }
+
+  /// `Ср`
+  String get wednesdayShort {
+    return Intl.message('Ср', name: 'wednesdayShort', desc: '', args: []);
+  }
+
+  /// `Чт`
+  String get thursdayShort {
+    return Intl.message('Чт', name: 'thursdayShort', desc: '', args: []);
+  }
+
+  /// `Пт`
+  String get fridayShort {
+    return Intl.message('Пт', name: 'fridayShort', desc: '', args: []);
+  }
+
+  /// `Сб`
+  String get saturdayShort {
+    return Intl.message('Сб', name: 'saturdayShort', desc: '', args: []);
+  }
+
+  /// `Имя пользователя`
+  String get username {
+    return Intl.message(
+      'Имя пользователя',
+      name: 'username',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Телефон`
+  String get phone {
+    return Intl.message('Телефон', name: 'phone', desc: '', args: []);
+  }
+
+  /// `Информация профиля`
+  String get profileInfo {
+    return Intl.message(
+      'Информация профиля',
+      name: 'profileInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Сменить пароль`
+  String get changePassword {
+    return Intl.message(
+      'Сменить пароль',
+      name: 'changePassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Выйти`
+  String get logout {
+    return Intl.message('Выйти', name: 'logout', desc: '', args: []);
+  }
+
+  /// `Сохранить`
+  String get save {
+    return Intl.message('Сохранить', name: 'save', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {
