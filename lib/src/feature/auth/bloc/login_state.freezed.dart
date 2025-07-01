@@ -21,6 +21,7 @@ mixin _$LoginState {
   String get password => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
+  bool get isLoginSuccessful => throw _privateConstructorUsedError;
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
@@ -41,6 +42,7 @@ abstract class $LoginStateCopyWith<$Res> {
     String password,
     bool isLoading,
     String? errorMessage,
+    bool isLoginSuccessful,
   });
 }
 
@@ -63,6 +65,7 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
     Object? password = null,
     Object? isLoading = null,
     Object? errorMessage = freezed,
+    Object? isLoginSuccessful = null,
   }) {
     return _then(
       _value.copyWith(
@@ -86,6 +89,11 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
                     ? _value.errorMessage
                     : errorMessage // ignore: cast_nullable_to_non_nullable
                         as String?,
+            isLoginSuccessful:
+                null == isLoginSuccessful
+                    ? _value.isLoginSuccessful
+                    : isLoginSuccessful // ignore: cast_nullable_to_non_nullable
+                        as bool,
           )
           as $Val,
     );
@@ -106,6 +114,7 @@ abstract class _$$LoginStateImplCopyWith<$Res>
     String password,
     bool isLoading,
     String? errorMessage,
+    bool isLoginSuccessful,
   });
 }
 
@@ -127,6 +136,7 @@ class __$$LoginStateImplCopyWithImpl<$Res>
     Object? password = null,
     Object? isLoading = null,
     Object? errorMessage = freezed,
+    Object? isLoginSuccessful = null,
   }) {
     return _then(
       _$LoginStateImpl(
@@ -150,6 +160,11 @@ class __$$LoginStateImplCopyWithImpl<$Res>
                 ? _value.errorMessage
                 : errorMessage // ignore: cast_nullable_to_non_nullable
                     as String?,
+        isLoginSuccessful:
+            null == isLoginSuccessful
+                ? _value.isLoginSuccessful
+                : isLoginSuccessful // ignore: cast_nullable_to_non_nullable
+                    as bool,
       ),
     );
   }
@@ -163,6 +178,7 @@ class _$LoginStateImpl implements _LoginState {
     this.password = '',
     this.isLoading = false,
     this.errorMessage,
+    this.isLoginSuccessful = false,
   });
 
   @override
@@ -176,10 +192,13 @@ class _$LoginStateImpl implements _LoginState {
   final bool isLoading;
   @override
   final String? errorMessage;
+  @override
+  @JsonKey()
+  final bool isLoginSuccessful;
 
   @override
   String toString() {
-    return 'LoginState(email: $email, password: $password, isLoading: $isLoading, errorMessage: $errorMessage)';
+    return 'LoginState(email: $email, password: $password, isLoading: $isLoading, errorMessage: $errorMessage, isLoginSuccessful: $isLoginSuccessful)';
   }
 
   @override
@@ -193,12 +212,20 @@ class _$LoginStateImpl implements _LoginState {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.isLoginSuccessful, isLoginSuccessful) ||
+                other.isLoginSuccessful == isLoginSuccessful));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, email, password, isLoading, errorMessage);
+  int get hashCode => Object.hash(
+    runtimeType,
+    email,
+    password,
+    isLoading,
+    errorMessage,
+    isLoginSuccessful,
+  );
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
@@ -215,6 +242,7 @@ abstract class _LoginState implements LoginState {
     final String password,
     final bool isLoading,
     final String? errorMessage,
+    final bool isLoginSuccessful,
   }) = _$LoginStateImpl;
 
   @override
@@ -225,6 +253,8 @@ abstract class _LoginState implements LoginState {
   bool get isLoading;
   @override
   String? get errorMessage;
+  @override
+  bool get isLoginSuccessful;
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.

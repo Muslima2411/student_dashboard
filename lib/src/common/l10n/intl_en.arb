@@ -44,7 +44,13 @@
   "profileInfo": "Profile Information",
   "changePassword": "Change Password",
   "logout": "Log out",
-  "save": "Save"
+  "save": "Save",
+  "emailRequired": "Email is required",
+  "emailInvalid": "Please enter a valid email address",
+  "passwordRequired": "Password is required",
+  "passwordTooShort": "Password must be at least 6 characters long",
+  "showPassword": "Show password",
+  "hidePassword": "Hide password"
 
 }
 

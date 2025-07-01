@@ -33,9 +33,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit": MessageLookupByLibrary.simpleMessage("Edit"),
     "eduCenters": MessageLookupByLibrary.simpleMessage("My Edu. Centers"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
+    "emailInvalid": MessageLookupByLibrary.simpleMessage(
+      "Please enter a valid email address",
+    ),
+    "emailRequired": MessageLookupByLibrary.simpleMessage("Email is required"),
     "friday": MessageLookupByLibrary.simpleMessage("Friday"),
     "fridayShort": MessageLookupByLibrary.simpleMessage("F"),
     "grammar_course": MessageLookupByLibrary.simpleMessage("Grammar"),
+    "hidePassword": MessageLookupByLibrary.simpleMessage("Hide password"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "ielts_course": MessageLookupByLibrary.simpleMessage("IELTS course"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
@@ -49,6 +54,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "My current/ongoing courses",
     ),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "passwordRequired": MessageLookupByLibrary.simpleMessage(
+      "Password is required",
+    ),
+    "passwordTooShort": MessageLookupByLibrary.simpleMessage(
+      "Password must be at least 6 characters long",
+    ),
     "phone": MessageLookupByLibrary.simpleMessage("Phone"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "profileInfo": MessageLookupByLibrary.simpleMessage("Profile Information"),
@@ -56,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "saturdayShort": MessageLookupByLibrary.simpleMessage("S"),
     "save": MessageLookupByLibrary.simpleMessage("Save"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+    "showPassword": MessageLookupByLibrary.simpleMessage("Show password"),
     "signInSubtitle": MessageLookupByLibrary.simpleMessage(
       "Enter your email and password to log in",
     ),

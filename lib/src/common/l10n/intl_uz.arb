@@ -44,6 +44,12 @@
   "profileInfo": "Profil ma'lumotlari",
   "changePassword": "Parolni o‘zgartirish",
   "logout": "Chiqish",
-  "save": "Saqlash"
+  "save": "Saqlash",
+  "emailRequired": "Elektron pochta talab qilinadi",
+  "emailInvalid": "Iltimos, to'g'ri elektron pochta manzilini kiriting",
+  "passwordRequired": "Parol talab qilinadi",
+  "passwordTooShort": "Parol kamida 6 ta belgidan iborat bo'lishi kerak",
+  "showPassword": "Parolni ko'rsatish",
+  "hidePassword": "Parolni yashirish"
 
 }

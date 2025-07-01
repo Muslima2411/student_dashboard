@@ -65,6 +65,7 @@ dependencies:
   #for lottie files
   lottie: ^3.1.3
   syncfusion_flutter_charts: ^30.1.37
+  flutter_hooks: ^0.21.2
 
 
 dev_dependencies:

@@ -33,9 +33,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit": MessageLookupByLibrary.simpleMessage("Редактировать"),
     "eduCenters": MessageLookupByLibrary.simpleMessage("Мои учебные центры"),
     "email": MessageLookupByLibrary.simpleMessage("Электронная почта"),
+    "emailInvalid": MessageLookupByLibrary.simpleMessage(
+      "Пожалуйста, введите действительный адрес электронной почты",
+    ),
+    "emailRequired": MessageLookupByLibrary.simpleMessage(
+      "Электронная почта обязательна",
+    ),
     "friday": MessageLookupByLibrary.simpleMessage("Пятница"),
     "fridayShort": MessageLookupByLibrary.simpleMessage("Пт"),
     "grammar_course": MessageLookupByLibrary.simpleMessage("Грамматика"),
+    "hidePassword": MessageLookupByLibrary.simpleMessage("Скрыть пароль"),
     "home": MessageLookupByLibrary.simpleMessage("Главная"),
     "ielts_course": MessageLookupByLibrary.simpleMessage("Курс IELTS"),
     "language": MessageLookupByLibrary.simpleMessage("Язык"),
@@ -47,6 +54,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "myProfile": MessageLookupByLibrary.simpleMessage("Мой Профиль"),
     "ongoingCourses": MessageLookupByLibrary.simpleMessage("Мои текущие курсы"),
     "password": MessageLookupByLibrary.simpleMessage("Пароль"),
+    "passwordRequired": MessageLookupByLibrary.simpleMessage(
+      "Пароль обязателен",
+    ),
+    "passwordTooShort": MessageLookupByLibrary.simpleMessage(
+      "Пароль должен содержать не менее 6 символов",
+    ),
     "phone": MessageLookupByLibrary.simpleMessage("Телефон"),
     "profile": MessageLookupByLibrary.simpleMessage("Профиль"),
     "profileInfo": MessageLookupByLibrary.simpleMessage("Информация профиля"),
@@ -54,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "saturdayShort": MessageLookupByLibrary.simpleMessage("Сб"),
     "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
     "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
+    "showPassword": MessageLookupByLibrary.simpleMessage("Показать пароль"),
     "signInSubtitle": MessageLookupByLibrary.simpleMessage(
       "Введите свою почту и пароль для входа",
     ),

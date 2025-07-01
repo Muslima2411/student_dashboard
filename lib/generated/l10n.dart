@@ -329,6 +329,66 @@ class AppLocalizations {
   String get save {
     return Intl.message('Сохранить', name: 'save', desc: '', args: []);
   }
+
+  /// `Электронная почта обязательна`
+  String get emailRequired {
+    return Intl.message(
+      'Электронная почта обязательна',
+      name: 'emailRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пожалуйста, введите действительный адрес электронной почты`
+  String get emailInvalid {
+    return Intl.message(
+      'Пожалуйста, введите действительный адрес электронной почты',
+      name: 'emailInvalid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пароль обязателен`
+  String get passwordRequired {
+    return Intl.message(
+      'Пароль обязателен',
+      name: 'passwordRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Пароль должен содержать не менее 6 символов`
+  String get passwordTooShort {
+    return Intl.message(
+      'Пароль должен содержать не менее 6 символов',
+      name: 'passwordTooShort',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Показать пароль`
+  String get showPassword {
+    return Intl.message(
+      'Показать пароль',
+      name: 'showPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Скрыть пароль`
+  String get hidePassword {
+    return Intl.message(
+      'Скрыть пароль',
+      name: 'hidePassword',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -21,19 +21,19 @@ mixin _$LoginEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
-    required TResult Function() loginSubmitted,
+    required TResult Function(VoidCallback? onSuccess) loginSubmitted,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
-    TResult? Function()? loginSubmitted,
+    TResult? Function(VoidCallback? onSuccess)? loginSubmitted,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
-    TResult Function()? loginSubmitted,
+    TResult Function(VoidCallback? onSuccess)? loginSubmitted,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -116,15 +116,23 @@ class __$$EmailChangedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EmailChangedImpl implements EmailChanged {
+class _$EmailChangedImpl with DiagnosticableTreeMixin implements EmailChanged {
   const _$EmailChangedImpl(this.email);
 
   @override
   final String email;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'LoginEvent.emailChanged(email: $email)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'LoginEvent.emailChanged'))
+      ..add(DiagnosticsProperty('email', email));
   }
 
   @override
@@ -151,7 +159,7 @@ class _$EmailChangedImpl implements EmailChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
-    required TResult Function() loginSubmitted,
+    required TResult Function(VoidCallback? onSuccess) loginSubmitted,
   }) {
     return emailChanged(email);
   }
@@ -161,7 +169,7 @@ class _$EmailChangedImpl implements EmailChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
-    TResult? Function()? loginSubmitted,
+    TResult? Function(VoidCallback? onSuccess)? loginSubmitted,
   }) {
     return emailChanged?.call(email);
   }
@@ -171,7 +179,7 @@ class _$EmailChangedImpl implements EmailChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
-    TResult Function()? loginSubmitted,
+    TResult Function(VoidCallback? onSuccess)? loginSubmitted,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -264,15 +272,25 @@ class __$$PasswordChangedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PasswordChangedImpl implements PasswordChanged {
+class _$PasswordChangedImpl
+    with DiagnosticableTreeMixin
+    implements PasswordChanged {
   const _$PasswordChangedImpl(this.password);
 
   @override
   final String password;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'LoginEvent.passwordChanged(password: $password)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'LoginEvent.passwordChanged'))
+      ..add(DiagnosticsProperty('password', password));
   }
 
   @override
@@ -303,7 +321,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
-    required TResult Function() loginSubmitted,
+    required TResult Function(VoidCallback? onSuccess) loginSubmitted,
   }) {
     return passwordChanged(password);
   }
@@ -313,7 +331,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
-    TResult? Function()? loginSubmitted,
+    TResult? Function(VoidCallback? onSuccess)? loginSubmitted,
   }) {
     return passwordChanged?.call(password);
   }
@@ -323,7 +341,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
-    TResult Function()? loginSubmitted,
+    TResult Function(VoidCallback? onSuccess)? loginSubmitted,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -385,6 +403,8 @@ abstract class _$$LoginSubmittedImplCopyWith<$Res> {
     _$LoginSubmittedImpl value,
     $Res Function(_$LoginSubmittedImpl) then,
   ) = __$$LoginSubmittedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({VoidCallback? onSuccess});
 }
 
 /// @nodoc
@@ -398,35 +418,75 @@ class __$$LoginSubmittedImplCopyWithImpl<$Res>
 
   /// Create a copy of LoginEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? onSuccess = freezed}) {
+    return _then(
+      _$LoginSubmittedImpl(
+        onSuccess:
+            freezed == onSuccess
+                ? _value.onSuccess
+                : onSuccess // ignore: cast_nullable_to_non_nullable
+                    as VoidCallback?,
+      ),
+    );
+  }
 }
 
 /// @nodoc
 
-class _$LoginSubmittedImpl implements LoginSubmitted {
-  const _$LoginSubmittedImpl();
+class _$LoginSubmittedImpl
+    with DiagnosticableTreeMixin
+    implements LoginSubmitted {
+  const _$LoginSubmittedImpl({this.onSuccess});
 
   @override
-  String toString() {
-    return 'LoginEvent.loginSubmitted()';
+  final VoidCallback? onSuccess;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'LoginEvent.loginSubmitted(onSuccess: $onSuccess)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'LoginEvent.loginSubmitted'))
+      ..add(DiagnosticsProperty('onSuccess', onSuccess));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoginSubmittedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$LoginSubmittedImpl &&
+            (identical(other.onSuccess, onSuccess) ||
+                other.onSuccess == onSuccess));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, onSuccess);
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoginSubmittedImplCopyWith<_$LoginSubmittedImpl> get copyWith =>
+      __$$LoginSubmittedImplCopyWithImpl<_$LoginSubmittedImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
-    required TResult Function() loginSubmitted,
+    required TResult Function(VoidCallback? onSuccess) loginSubmitted,
   }) {
-    return loginSubmitted();
+    return loginSubmitted(onSuccess);
   }
 
   @override
@@ -434,9 +494,9 @@ class _$LoginSubmittedImpl implements LoginSubmitted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
-    TResult? Function()? loginSubmitted,
+    TResult? Function(VoidCallback? onSuccess)? loginSubmitted,
   }) {
-    return loginSubmitted?.call();
+    return loginSubmitted?.call(onSuccess);
   }
 
   @override
@@ -444,11 +504,11 @@ class _$LoginSubmittedImpl implements LoginSubmitted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
-    TResult Function()? loginSubmitted,
+    TResult Function(VoidCallback? onSuccess)? loginSubmitted,
     required TResult orElse(),
   }) {
     if (loginSubmitted != null) {
-      return loginSubmitted();
+      return loginSubmitted(onSuccess);
     }
     return orElse();
   }
@@ -489,5 +549,14 @@ class _$LoginSubmittedImpl implements LoginSubmitted {
 }
 
 abstract class LoginSubmitted implements LoginEvent {
-  const factory LoginSubmitted() = _$LoginSubmittedImpl;
+  const factory LoginSubmitted({final VoidCallback? onSuccess}) =
+      _$LoginSubmittedImpl;
+
+  VoidCallback? get onSuccess;
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoginSubmittedImplCopyWith<_$LoginSubmittedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

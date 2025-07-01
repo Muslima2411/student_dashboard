@@ -9,5 +9,6 @@ class LoginState with _$LoginState {
     @Default('') String password,
     @Default(false) bool isLoading,
     String? errorMessage,
+    @Default(false) bool isLoginSuccessful,
   }) = _LoginState;
 }

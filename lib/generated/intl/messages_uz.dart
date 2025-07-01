@@ -39,9 +39,16 @@ class MessageLookup extends MessageLookupByLibrary {
       "Mening ta\'lim markazlarim",
     ),
     "email": MessageLookupByLibrary.simpleMessage("Elektron pochta"),
+    "emailInvalid": MessageLookupByLibrary.simpleMessage(
+      "Iltimos, to\'g\'ri elektron pochta manzilini kiriting",
+    ),
+    "emailRequired": MessageLookupByLibrary.simpleMessage(
+      "Elektron pochta talab qilinadi",
+    ),
     "friday": MessageLookupByLibrary.simpleMessage("Juma"),
     "fridayShort": MessageLookupByLibrary.simpleMessage("Jum"),
     "grammar_course": MessageLookupByLibrary.simpleMessage("Grammatika"),
+    "hidePassword": MessageLookupByLibrary.simpleMessage("Parolni yashirish"),
     "home": MessageLookupByLibrary.simpleMessage("Bosh sahifa"),
     "ielts_course": MessageLookupByLibrary.simpleMessage("IELTS kursi"),
     "language": MessageLookupByLibrary.simpleMessage("Til"),
@@ -53,6 +60,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "myProfile": MessageLookupByLibrary.simpleMessage("Profilim"),
     "ongoingCourses": MessageLookupByLibrary.simpleMessage("Mening kurslarim"),
     "password": MessageLookupByLibrary.simpleMessage("Parol"),
+    "passwordRequired": MessageLookupByLibrary.simpleMessage(
+      "Parol talab qilinadi",
+    ),
+    "passwordTooShort": MessageLookupByLibrary.simpleMessage(
+      "Parol kamida 6 ta belgidan iborat bo\'lishi kerak",
+    ),
     "phone": MessageLookupByLibrary.simpleMessage("Telefon raqami"),
     "profile": MessageLookupByLibrary.simpleMessage("Profil"),
     "profileInfo": MessageLookupByLibrary.simpleMessage("Profil ma\'lumotlari"),
@@ -60,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "saturdayShort": MessageLookupByLibrary.simpleMessage("Shan"),
     "save": MessageLookupByLibrary.simpleMessage("Saqlash"),
     "settings": MessageLookupByLibrary.simpleMessage("Sozlamalar"),
+    "showPassword": MessageLookupByLibrary.simpleMessage("Parolni ko\'rsatish"),
     "signInSubtitle": MessageLookupByLibrary.simpleMessage(
       "Kirish uchun elektron pochta va parolingizni kiriting",
     ),
